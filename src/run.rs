@@ -43,7 +43,7 @@ pub fn run<'a>(state: &'a mut State<'_>, input: &Input) -> &'a Output {
     source.set_k(input.ct.k());
     context.module.ckks_copy(source, &input.ct, &mut scratch).expect("copy the input");
     output.set_k(context.preset.bootstrap_k().into());
-    <BE as CKKSEncapsulatedModUpImpl<BE>>::ckks_encapsulated_mod_up(
+    <BE as CKKSEncapsulatedModUpImpl>::ckks_encapsulated_mod_up(
         &context.module,
         output,
         source,
